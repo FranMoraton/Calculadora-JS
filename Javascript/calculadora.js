@@ -1,8 +1,8 @@
 window.onload = function()
 {
-  let cachedDisplay = 0;
-  let cachedOperation = '';
-  let decimalBool = false;
+  const cachedDisplay = 0;
+  const cachedOperation = '';
+  const decimalBool = false;
 
 
   const buttons = document.getElementsByTagName("button");
@@ -36,7 +36,7 @@ function increaseNumber(valor)
   {
       displayNumber = '';
     }
-  if (displayNumber.length < 10)
+  if (displayNumber.length < 9)
   {
   displayNumber += valor;
     }
@@ -82,7 +82,7 @@ function decimal() {
 
 function changeDecimalBool()
 {
-  const decimalBool = !(decimalBool);
+  const decimalBool = !decimalBool;
 }
 
 function saveDisplayAndReset()
@@ -92,10 +92,10 @@ function saveDisplayAndReset()
 }
 
 const operationsFactory = {
-  add: function () { cachedOperation = 'add'; saveDisplayAndReset(); },
-  subtract: function () { cachedOperation = 'subtract'; saveDisplayAndReset(); },
-  multiply: function () { cachedOperation = 'multiply'; saveDisplayAndReset(); },
-  divide: function () { cachedOperation = 'divide'; saveDisplayAndReset(); },
+  add: function () { const cachedOperation = 'add'; saveDisplayAndReset(); },
+  subtract: function () { const cachedOperation = 'subtract'; saveDisplayAndReset(); },
+  multiply: function () { const cachedOperation = 'multiply'; saveDisplayAndReset(); },
+  divide: function () { const cachedOperation = 'divide'; saveDisplayAndReset(); },
   decimal: function () { decimal(); },
   clear: function () { clear(); },
   calculate: function () { calculate(); }
