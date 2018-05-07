@@ -89,6 +89,7 @@ function saveDisplayAndReset()
 {
   const cachedDisplay = document.getElementsByClassName('calculator__display')[0].innerHTML;
   document.getElementsByClassName('calculator__display')[0].innerHTML = 0;
+  changeDecimalBool();
 }
 
 const operationsFactory = {
@@ -106,6 +107,7 @@ function calculate() {
     let num2 = parseFloat(cachedDisplay);
     let result = operations[cachedOperation](num1, num2);
     setDisplayNumber(result);
+    changeDecimalBool();
 }
 
 const operations = {
