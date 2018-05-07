@@ -1,8 +1,8 @@
 window.onload = function()
 {
-  const cachedDisplay = 0;
-  const cachedOperation = '';
-  const decimalBool = false;
+  var cachedDisplay = 0;
+  var cachedOperation = '';
+  var decimalBool = false;
 
 
   const buttons = document.getElementsByTagName("button");
@@ -50,7 +50,7 @@ function setDisplayNumber(number) {
 }
 
 function clear() {
-    const cachedDisplay = 0;
+     cachedDisplay = 0;
     setDisplayNumber(0);
 };
 
@@ -82,38 +82,42 @@ function decimal() {
 
 function changeDecimalBool()
 {
-  const decimalBool = !decimalBool;
+   decimalBool = true;
 }
-
+function resetDecimalBool()
+{
+   decimalBool = false;
+}
 function saveDisplayAndReset()
 {
-  const cachedDisplay = document.getElementsByClassName('calculator__display')[0].innerHTML;
+   cachedDisplay = document.getElementsByClassName('calculator__display')[0].innerHTML;
   document.getElementsByClassName('calculator__display')[0].innerHTML = 0;
-  changeDecimalBool();
+  resetDecimalBool();
 }
 
 const operationsFactory = {
-  add: function () { const cachedOperation = 'add'; saveDisplayAndReset(); },
-  subtract: function () { const cachedOperation = 'subtract'; saveDisplayAndReset(); },
-  multiply: function () { const cachedOperation = 'multiply'; saveDisplayAndReset(); },
-  divide: function () { const cachedOperation = 'divide'; saveDisplayAndReset(); },
+  add: function () {  cachedOperation = 'add'; saveDisplayAndReset(); },
+  subtract: function () {  cachedOperation = 'subtract'; saveDisplayAndReset(); },
+  multiply: function () {  cachedOperation = 'multiply'; saveDisplayAndReset(); },
+  divide: function () {  cachedOperation = 'divide'; saveDisplayAndReset(); },
   decimal: function () { decimal(); },
   clear: function () { clear(); },
   calculate: function () { calculate(); }
 }
 
 function calculate() {
-    let num1 = parseFloat(document.getElementsByClassName('calculator__display')[0].innerHTML);
-    let num2 = parseFloat(cachedDisplay);
+    let num1 = parseFloat(cachedDisplay);
+    let num2 = parseFloat(document.getElementsByClassName('calculator__display')[0].innerHTML);
     let result = operations[cachedOperation](num1, num2);
+    console.log(result);
     setDisplayNumber(result);
-    changeDecimalBool();
+    resetDecimalBool();
 }
 
 const operations = {
-    add: function (num1, num2) { add(num1, num2); },
-    subtract: function (num1, num2) { subtract(num1, num2); },
-    multiply: function (num1, num2) { multiply(num1, num2); },
-    divide: function (num1, num2) { divide(num1, num2); }
+    add: function (num1, num2) { return add(num1, num2); },
+    subtract: function (num1, num2) { return subtract(num1, num2); },
+    multiply: function (num1, num2) {  return multiply(num1, num2); },
+    divide: function (num1, num2) { return divide(num1, num2); }
 }
 };
