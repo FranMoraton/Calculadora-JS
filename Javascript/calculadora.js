@@ -52,6 +52,7 @@ function setDisplayNumber(number) {
 function clear() {
      cachedDisplay = 0;
     setDisplayNumber(0);
+    resetDecimalBool();
 };
 
 function add(num1, num2) {
@@ -109,7 +110,6 @@ function calculate() {
     let num1 = parseFloat(cachedDisplay);
     let num2 = parseFloat(document.getElementsByClassName('calculator__display')[0].innerHTML);
     let result = operations[cachedOperation](num1, num2);
-    console.log(result);
     setDisplayNumber(result);
     resetDecimalBool();
 }
